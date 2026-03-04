@@ -1,32 +1,28 @@
 pipeline{
     agent none 
     stages{
-        agent ( label 'slave1' ){
-            stages{
-                stage('Checkout'){
+        
+        stages{
+            stage('Checkout'){
                     steps{
                         echo 'Checking out...'
                     }
                 }
+        
+            stage('Build'){
+                steps{
+                    echo 'Building...'
+                }
             }
-        }
-        stage('Build'){
-            agent ( label 'slave1' ){
-            steps{
-                echo 'Building...'
+            stage('Test'){
+                steps{
+                    echo 'Testing...'
+                }
             }
-        }
-        stage('Test'){
-            agent ( label 'slave2' )
-            steps{
-                echo 'Testing...'
+            stage('Deploy'){
+                steps{
+                    echo 'Deploying...'
+                }
             }
-        }
-        stage('Deploy'){
-            agent ( label 'slave2' )
-            steps{
-                echo 'Deploying...'
-            }
-        }
     }   
 }
