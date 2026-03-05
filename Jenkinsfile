@@ -18,13 +18,13 @@ pipeline{
             }
         }
         stage('Test'){
-            agent (label 'ubuntu_slave2')
+            agent (label 'ubuntu_slave1')
             steps{
                     echo 'Testing...'
             }
         }
             stage('Deploy'){
-                agent (label 'ubuntu_slave2')
+                agent (label 'ubuntu_slave1')
                 steps{
                     echo 'Deploying...'
             }
