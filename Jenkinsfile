@@ -6,7 +6,7 @@ pipeline{
                 agent {label 'ubuntu_slave1'}
                 steps{
                     echo 'Checking out...'
-                    checkout scmGit(branches: [[name: '*/main']],
+                    checkout scmGit(branches: [[name: '*/pipeline_branch']],
                                 extensions: [],
                                 userRemoteConfigs: [[credentialsId: 'Harshitha',
                                 url: 'https://github.com/Harshitha151096/pipeline_demo.git']])
