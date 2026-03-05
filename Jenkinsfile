@@ -1,7 +1,8 @@
 pipeline{
-    agent any 
+    agent none 
     stages{
         stage('Checkout'){
+            agent (label 'ubuntu_slave1')
             steps{
                 echo 'Checking out...'
                 checkout scmGit(branches: [[name: '*/main']],
@@ -11,16 +12,19 @@ pipeline{
                         }
        }
         stage('Build'){
+            agent (label 'ubuntu_slave1')
             steps{
                     echo 'Building...'
             }
         }
-            stage('Test'){
-                steps{
+        stage('Test'){
+            agent (label 'ubuntu_slave1')
+            steps{
                     echo 'Testing...'
             }
         }
             stage('Deploy'){
+                agent (label 'ubuntu_slave1')
                 steps{
                     echo 'Deploying...'
             }
