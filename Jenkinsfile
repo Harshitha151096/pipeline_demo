@@ -1,7 +1,7 @@
 pipeline{
     agent none
     stages{
-        Parallel{
+        parallel{
             stage('Checkout'){
                 agent {label 'ubuntu_slave1'}
                 steps{
@@ -13,7 +13,7 @@ pipeline{
                             }
             }
             stage('Build'){
-                agent {label 'ubuntu_slave2'}
+                agent {label 'ubuntu_slave1'}
                 steps{
                         echo 'Building...'
                 }
