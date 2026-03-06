@@ -1,0 +1,32 @@
+pipeline {
+    agent any // or 'agent none' with agents defined in each parallel stage
+    stages {
+        stage('Parallel Tasks') {
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        echo 'Running unit tests...'
+                        // run your unit tests commands here
+                    }
+                }
+                stage('Linting') {
+                    steps {
+                        echo 'Running linting...'
+                        // run your linting commands here
+                    }
+                }
+                stage('Security Scan') {
+                    steps {
+                        echo 'Running security scan...'
+                        // run your security scan commands here
+                    }
+                }
+            }
+        }
+        stage('Post-Parallel Stage') {
+            steps {
+                echo 'All parallel tasks finished. Proceeding with next stage.'
+            }
+        }
+    }
+}
