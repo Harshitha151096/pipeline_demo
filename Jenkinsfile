@@ -10,38 +10,22 @@ pipeline {
                         url: 'https://github.com/Harshitha151096/pipeline_demo.git']])
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Building...'
-            }
-        }
+
         stage('Parallel Tasks') {
             parallel {
-                stage('Unit Tests') {
+                stage('Build') {
                     steps {
-                        echo 'Running unit tests...'
-                        // run your unit tests commands here
+                        echo 'Building...'
                     }
                 }
-                stage('Linting') {
+                stage('Test') {
                     steps {
-                        echo 'Running linting...'
-                        // run your linting commands here
-                    }
-                }
-                stage('Security Scan') {
-                    steps {
-                        echo 'Running security scan...'
-                        // run your security scan commands here
+                        echo 'Testing...'
                     }
                 }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
